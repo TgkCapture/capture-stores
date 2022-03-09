@@ -8,9 +8,34 @@ for(var i = 0; i < updateBtns.length; i++){
 
         console.log('USER:', user)
         if(user === 'AnonymousUser'){
-            crossOriginIsolated.log('Not Logged in')
+            // crossOriginIsolated.log('Not Logged in')
+            console.log('Not Logged in')
         }else{
-            console.log('User is Logged in, sending Data..')
+            updateUserOrder(productId, action)
+            // console.log('user is logged in sending data')
         }
+    })
+}
+
+function updateUserOrder(productId, action){
+    console.log('User is logged in, sending data..')
+
+    var url = '/update_item/'
+
+    fetch(url, {
+        method: 'POST',
+        headers:{
+            'Content-Type':'application/json',
+            'X-CSRFToken':csrftoken,
+        },
+        body:JSON.stringify({'productId': productId, 'action':action})
+    })
+
+    .then((response) =>{
+        return response.json()
+    })
+
+    .then((data) =>{
+        console.log('data:', data)
     })
 }
