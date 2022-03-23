@@ -8,4 +8,3 @@ Ecommerce website
 - Checkout process (shipping, payment method, etc)
 - PayPal integration
 
-![gitartwork](gitartwork.svg)
